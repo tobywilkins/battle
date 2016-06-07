@@ -23,8 +23,8 @@ feature 'battle screen' do
 		expect(page).to have_content 'Elena 100'
 	end
 
-	it 'can attack player 2' do 
-		click_link "Attack Player 2"
-		expect(page).to have_content 'Player 1 attacks player 2'
-	end 
+	it 'can attack player 2' do
+		click_button "Attack Player 2"
+		expect(page).to have_content 'player2 got attacked'
+	end
 end

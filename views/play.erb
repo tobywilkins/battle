@@ -6,15 +6,15 @@
 </head>
 
 <body>
-  <h1>	<%= @Player_1 %> vs. <%= @Player_2 %> </h1>
+  <h1>	<%= $player1 %> vs. <%= $player2 %> </h1>
   <div class="player">
-    <h3><%= session[:Player1] %> 100</h3>
+    <h3><%= $player1 %> 100</h3>
     <form action="/attack" method="post">
       <button type="submit" name="target" value="player2">Attack Player 2</button>
     </form>
   </div>
   <div class="player">
-    <h3><%= session[:Player2] %> 100</h3>
+    <h3><%= $player2 %> 100</h3>
     <form action="/attack" method="post">
       <button type="submit" name="target" value="player1">Attack Player 1</button>
     </form>

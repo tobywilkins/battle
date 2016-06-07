@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'players login' do
+feature 'players login' do
 	it 'lets players login' do
 		visit '/'
 		fill_in :Player1, with: 'Kenneth'
@@ -10,7 +10,7 @@ describe 'players login' do
 	end
 end
 
-describe 'battle screen' do
+feature 'battle screen' do
 	before(:each) do
 		visit '/'
 		fill_in :Player1, with: 'Kenneth'
@@ -18,9 +18,13 @@ describe 'battle screen' do
 		click_button :Submit
 	end
 
-
 	it 'health of players is displayed' do
 		expect(page).to have_content 'Kenneth 100'
 		expect(page).to have_content 'Elena 100'
 	end
+
+	it 'can attack player 2' do 
+		click_link "Attack Player 2"
+		expect(page).to have_content 'Player 1 attacks player 2'
+	end 
 end

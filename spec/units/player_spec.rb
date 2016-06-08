@@ -13,4 +13,12 @@ describe Player do
       expect(player.hitpoints).to eq(Player::DEFAULT_HITPOINTS - 10)
     end
   end
+
+  describe '#paralyze' do
+    it "should set the paralysis state" do
+      player.paralyze
+      expect(player.paralysis).to eq true
+    end
+  end
+
 end

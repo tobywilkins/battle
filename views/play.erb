@@ -1,3 +1,10 @@
+<html>
+  <head>
+  <title> Battle app </title>
+  <link rel="stylesheet" type="text/css" href="style.css" />
+  </head>
+
+  <body background="https://i.ytimg.com/vi/9e5QoivIfTo/maxresdefault.jpg">
 <h1><%=@game.player1.name%> vs <%=@game.player2.name%>! </h1>
 <h3>It is <%=@game.active_player.name%>'s turn to act...</h3>
   <div>
@@ -6,9 +13,14 @@
 <form action="/attack" method="post">
   <input type="submit" value="Attack">
 </form>
+<form action="/paralyze" method="post">
+  <input type="submit" value="Paralyze">
+</form>
 <% if @game.last_action == "Attack"%>
-  <h3> You successfully attacked <%= @game.inactive_player.name %> doing 10 damage!!! </h3>
+  <h3> You successfully attacked <%= @game.inactive_player.name %> doing <%=@game.inactive_player.latest_damage%> damage!!! </h3>
 <%end%>
 <form action="/end_turn" method="post">
   <input type="submit" value="End Turn">
 </form>
+</body>
+</html>

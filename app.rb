@@ -8,22 +8,24 @@ class Battle < Sinatra::Base
   enable :sessions
   set :session_secret, 'Secret Session'
 
+  before do
+    @game = Game.instance
+  end
+
   get '/' do
     erb(:index)
   end
 
   post '/names' do
-    $game = Game.new(Player.new(params[:player1]),Player.new(params[:player2]))
+    @game = Game.create(Player.new(params[:player1]),Player.new(params[:player2]))
     redirect '/play'
   end
 
   get '/play' do
-    @game = $game
     erb(:play)
   end
 
   post '/attack' do
-    @game = $game
     AttackGenerator.run(@game.inactive_player)
     @game.set_last_action("Attack")
     if @game.inactive_player.hitpoints <= 0
@@ -33,15 +35,17 @@ class Battle < Sinatra::Base
     end
   end
 
+  post '/paralyze' do
+    ParalysisGenerator.run(@game.inactive_player)
+  end
+
   post '/end_turn' do
-    @game = $game
     @game.switch_turn
     @game.set_last_action(nil)
     redirect '/play'
   end
 
   get '/win' do
-    @game = $game
     erb(:win)
   end
 

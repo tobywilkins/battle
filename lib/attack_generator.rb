@@ -9,7 +9,8 @@ class AttackGenerator
   end
 
   def process_attack
-    @player.remove_hitpoints(10)
+    damage = 5+ rand(10)
+    @player.remove_hitpoints(damage)
   end
 
 end

@@ -4,10 +4,20 @@
 	 <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-	<form action="/names" method="POST">
-		<input type="Text" name="Player1" placeholder="Player 1">
-		<input type="Text" name="Player2" placeholder="Player 2">
-		<input type="submit" id="Submit" value="Let the battle begin">
-	</form>
+	<div id="multiplayer">
+		<form action="/names" method="POST">
+			<input type="Text" name="Player1" placeholder="Player 1">
+			<input type="Text" name="Player2" placeholder="Player 2">
+			<input type="submit" id="Submit" value="Let the battle begin">
+		</form>
+	</div>
+
+	<div id="single_player">
+		<form action="/single" method="POST">
+			<input type="text" name="Player" placeholder="Player">
+			<input type="hidden" name="AI" value="Capybara">
+			<input type="submit" id="single_player" value="Single Player">
+		</form>
+	</div>
 </body>
 </html>

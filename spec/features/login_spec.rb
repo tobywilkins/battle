@@ -10,3 +10,13 @@ feature 'players login' do
 	end
 
 end
+
+feature 'single player' do
+	it 'starts a single player game' do
+		visit '/'
+		fill_in :Player, with: 'Kenneth'
+		click_button :single_player
+		expect(page).to have_content 'Kenneth vs. Capybara'
+	end
+
+end

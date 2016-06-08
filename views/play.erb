@@ -6,20 +6,18 @@
 </head>
 
 <body>
-  <h1>	<%= @player_1 %> vs. <%= @player_2 %> </h1>
+  <h1>	<%= @game.player1.name %> vs. <%= @game.player2.name %> </h1>
   <div class="player">
-    <h3><%= @player_1 %> 100</h3>
+    <h3><%= @game.player1.name %>: <%= @game.player1.hp %></h3>
     <form action="/attack" method="post">
-      <button type="submit" name="target" value="player2">Attack Player 2</button>
+      <button type="submit" value="submit">Attack Player 2</button>
     </form>
   </div>
   <div class="player">
-    <h3><%= @player_2 %> 100</h3>
-    <form action="/attack" method="post">
-      <button type="submit" name="target" value="player1">Attack Player 1</button>
-    </form>
+    <h3><%= @game.player2.name %>: <%= @game.player2.hp %></h3>
   </div>
-  <em><%= @status %></em>
+
+	<div><em><%= @status %></em></div>
 </body>
 
 </html>

@@ -1,7 +1,7 @@
 require 'sinatra/base'
 
 class Battle < Sinatra::Base
-  require './lib/damage_calculator'
+  require './lib/game'
   require './lib/player'
 
   enable :sessions
@@ -18,14 +18,15 @@ class Battle < Sinatra::Base
   end
 
   get '/play' do
-    @player1 = $player1
-    @player2 = $player2
+    @player1_name = $player1.name
+    @player2_name = $player2.name
+    @player2_hitpoints = $player2.hitpoints
     erb(:play)
   end
 
   post '/attack' do
     @player2 = $player2
-    DamageCalculator.new.attack(@player2)
+    Game.new.attack(@player2)
     redirect '/play'
   end
 

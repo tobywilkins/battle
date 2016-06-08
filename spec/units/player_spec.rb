@@ -9,8 +9,8 @@ describe Player do
 
   describe "#remove_hitpoints" do
     it "should remove the hitpoints" do
-      player.remove_hitpoints(20)
-      expect(player.hitpoints).to eq(80)
+      player.remove_hitpoints(10)
+      expect(player.hitpoints).to eq(Player::DEFAULT_HITPOINTS - 10)
     end
   end
 end

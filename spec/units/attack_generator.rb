@@ -1,0 +1,3 @@
+describe AttackGenerator do
+
+end

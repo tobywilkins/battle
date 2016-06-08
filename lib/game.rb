@@ -10,9 +10,8 @@ class Game
     @last_action = nil
   end
 
-  def attack
-    inactive_player.remove_hitpoints(10)
-    switch_turn
+  def switch_turn
+    switch_active_player
   end
 
   def set_last_action(action)
@@ -21,7 +20,7 @@ class Game
 
 
 private
-  def switch_turn
+  def switch_active_player
     active_player == player1 ? @active_player = player2 : @active_player = player1
     active_player == player1 ? @inactive_player = player2 : @inactive_player = player1
   end

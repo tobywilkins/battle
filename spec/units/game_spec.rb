@@ -18,13 +18,6 @@ describe Game do
     end
   end
 
-  describe "#attack" do
-    it "should ask player to remove hitpoints if attacked" do
-      game.attack
-      expect(player2).to have_received(:remove_hitpoints)
-    end
-  end
-
   describe "#set_last_action" do
     it "sets last action to attack if attack was done last" do
       game.set_last_action("Attack")

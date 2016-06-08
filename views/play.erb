@@ -9,3 +9,6 @@
 <% if @game.last_action == "Attack"%>
   <h3> You successfully attacked <%= @game.inactive_player.name %> doing 10 damage!!! </h3>
 <%end%>
+<form action="/end_turn" method="post">
+  <input type="submit" value="End Turn">
+</form>

@@ -6,6 +6,7 @@ before do sign_in_and_play end
 
   it 'switches turn to the other player' do
   click_button("Attack")
+  expect(page).not_to have_content("It is Toby's turn to act...")
   expect(page).to have_content("It is Van's turn to act...")
   end
 end

@@ -1,7 +1,11 @@
-<h1><%=@game.player1.name%> vs <%=@game.player2.name%>! It is <%=@game.active%>'s turn to act...</h1>
-<div>
-  <h2><%= @game.player1.name %> <%= @game.player1.hitpoints %> HP <%= @game.player2.name %> <%= @game.player2.hitpoints %> HP</h2>
-</div>
+<h1><%=@game.player1.name%> vs <%=@game.player2.name%>! </h1>
+<h3>It is <%=@game.active_player.name%>'s turn to act...</h3>
+  <div>
+    <h2> <%=@game.active_player.name%> has <%= @game.active_player.hitpoints %> HP <%= @game.inactive_player.name %> has <%= @game.inactive_player.hitpoints %> HP</h2>
+  </div>
 <form action="/attack" method="post">
   <input type="submit" value="Attack">
 </form>
+<% if @game.last_action == "Attack"%>
+  <h3> You successfully attacked <%= @game.inactive_player.name %> doing 10 damage!!! </h3>
+<%end%>

@@ -24,4 +24,11 @@ describe Game do
       expect(player2).to have_received(:remove_hitpoints)
     end
   end
+
+  describe "#set_last_action" do
+    it "sets last action to attack if attack was done last" do
+      game.set_last_action("Attack")
+      expect(game.last_action).to eq ("Attack")
+    end
+  end
 end

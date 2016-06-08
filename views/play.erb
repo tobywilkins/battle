@@ -7,10 +7,12 @@
 
 <body>
   <h1>	<%= @game.player1.name %> vs. <%= @game.player2.name %> </h1>
-  <div class="player">
+	<h2> <%= @game.player_turn.name %>'s turn</h2>
+
+	<div class="player">
     <h3><%= @game.player1.name %>: <%= @game.player1.hp %></h3>
     <form action="/attack" method="post">
-      <button type="submit" value="submit">Attack Player 2</button>
+      <button type="submit" value="submit">Attack</button>
     </form>
   </div>
   <div class="player">

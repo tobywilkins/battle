@@ -2,21 +2,15 @@ require 'spec_helper'
 
 feature 'attack' do
 	it 'lowers hit points by 10' do
-		visit '/'
-		fill_in :Player1, with: 'Kenneth'
-		fill_in :Player2, with: 'Elena'
-		click_button :Submit
-		click_button 'Attack Player 2'
+		sign_in
+		click_button 'Attack'
     expect(page).to have_content "Elena: 90"
 	end
 end
 
 feature 'battle screen' do
 	before(:each) do
-		visit '/'
-		fill_in :Player1, with: 'Kenneth'
-		fill_in :Player2, with: 'Elena'
-		click_button :Submit
+		sign_in
 	end
 
 	it 'can see the health of players' do
@@ -25,8 +19,16 @@ feature 'battle screen' do
 	end
 
 	it 'can attack player 2' do
-		click_button "Attack Player 2"
+		click_button "Attack"
 		expect(page).to have_content 'Elena got attacked'
 	end
 
+end
+
+feature 'turn switching' do
+  it 'swaps turn to player 2' do
+    sign_in
+    click_button "Attack"
+    expect(page).to have_content "Elena's turn"
+  end
 end

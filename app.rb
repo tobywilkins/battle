@@ -26,7 +26,7 @@ class Battle < Sinatra::Base
     erb(:play)
   end
   post '/attack' do
-    session[:message] = $game.attack($game.player2)
+    session[:message] = $game.attack
     redirect '/play'
   end
 

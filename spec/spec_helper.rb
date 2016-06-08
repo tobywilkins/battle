@@ -27,6 +27,8 @@ Capybara.app = Battle
 # users commonly want.
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
+require_relative 'web_helpers'
+
 RSpec.configure do |config|
   config.include Capybara::DSL
   config.color= true

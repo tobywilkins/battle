@@ -3,8 +3,9 @@ require 'game'
 
 describe Game do
   subject(:game) { described_class.new(player1, player2) }
-  let(:player1) { double(:player1, deduct: nil, name: "Player1") }
-  let(:player2) { double(:player2, deduct: nil, name: "Player2") }
+  let(:player1) { double(:player1, deduct: nil, name: "Player1", hp: 10) }
+  let(:player2) { double(:player2, deduct: nil, name: "Player2", hp:10) }
+  let(:dead_player) { double(:dead_player, deduct: nil, name: "dead_player",  hp: 0) }
 
   describe '#attack' do
     it 'calls deduct on player' do
@@ -24,6 +25,11 @@ describe Game do
     end
   end
 
-
+  describe '#game_over' do
+    it 'ends the game when a player reaches 0 hp' do
+      lost_game = Game.new(player1, dead_player)
+      expect(lost_game.attack).to eq "dead_player loses"
+    end
+  end
 
 end

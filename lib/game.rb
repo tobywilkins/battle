@@ -27,8 +27,12 @@ class Game
   end
 
   def end_turn
+    return "#{ defender.name } loses" if game_over?
     @turn_number += 1
     "#{ defender.name } got attacked"
   end
 
+  def game_over?
+    defender.hp <= 0
+  end
 end

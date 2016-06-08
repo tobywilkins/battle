@@ -19,6 +19,11 @@ class Battle < Sinatra::Base
     session[:message] = nil
     redirect '/play'
   end
+  
+  get '/lose' do
+    @status = session[:message]
+    erb(:lost)
+  end
 
   get '/play' do
     @game = $game
@@ -27,6 +32,7 @@ class Battle < Sinatra::Base
   end
   post '/attack' do
     session[:message] = $game.attack
+    redirect '/lose' if session[:message].split.last == "loses"
     redirect '/play'
   end
 

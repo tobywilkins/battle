@@ -32,3 +32,13 @@ feature 'turn switching' do
     expect(page).to have_content "Elena's turn"
   end
 end
+
+feature 'lose screen' do
+  scenario 'player two loses' do
+    sign_in
+    19.times do
+      click_button "Attack"
+    end
+    expect(page).to have_content "Elena loses"
+  end
+end

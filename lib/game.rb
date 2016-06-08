@@ -23,6 +23,7 @@ class Game
 
   def attack(type)
     set_combatants
+    suffer_poison if attacker.poisoned
     if able_to_fight?
       attack_selector(type)
     else
@@ -34,16 +35,17 @@ class Game
   def attack_selector(type)
     default_attack if type == "attack"
     sleep_attack if type == "sleep"
-    default_attack if type == "poison"
+    poison_attack if type == "poison"
   end
 
   def able_to_fight?
-    !attacker.paralyzed && !attacker.asleep
+    !attacker.paralyzed && !attacker.asleep && attacker.hp > 0
   end
 
   def condition
     return "asleep" if attacker.asleep
-    "paralyzed" if attacker.paralyzed
+    return "paralyzed" if attacker.paralyzed
+    "unconscious" if attacker.hp <= 0
   end
 
   def default_attack
@@ -60,6 +62,13 @@ class Game
   def sleep_attack
     defender.set_asleep
     @final_message = "#{ defender.name } fell asleep!"
+  end
+
+  def poison_attack
+    defender.poison if rand(10) < 7
+    defender.deduct(2 + rand(3))
+    @final_message = "#{ defender.name } got hit!" if !defender.poisoned
+    @final_message = "#{ defender.name } got poisoned!" if defender.poisoned
   end
 
   def player_turn
@@ -87,6 +96,9 @@ class Game
     defender.hp <= 0
   end
 
+  def suffer_poison
+    attacker.deduct(1 + rand(4))
+  end
   def self.build(name1, name2)
     player1 = Player.new(name1)
     player2 = Player.new(name2)

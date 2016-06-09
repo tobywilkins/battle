@@ -20,6 +20,11 @@ class Game # Knows about turns
     @attacker
     @turn_number = 1
     @attack_gen = attack_gen
+    @attacks = ["default_attack","poison_attack","sleep_attack","heal"]
+  end
+
+  def attack_random
+    p attack(attacks.sample)
   end
 
   def attack(type)
@@ -74,8 +79,11 @@ class Game # Knows about turns
 
   private
 
+  attr_reader :attacks
+
   def suffer_poison
     @attack_gen.suffer_poison(attacker)
   end
 
 end
+

@@ -23,8 +23,9 @@ class Attack
     defender.log ("#{ defender.name } fell asleep!")
   end
 
-  def heal(_, attacker)
+  def heal(defender, attacker)
     attacker.heal
+    defender.log ("#{ attacker.name } healed himself!")
   end
 
 end

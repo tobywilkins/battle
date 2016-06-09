@@ -31,7 +31,7 @@ class Player
   end
 
   def heal
-    @hp += (5 + srand(11))
+    @hp += (1 + rand(10))
   end
 
   def log(message)

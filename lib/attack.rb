@@ -25,7 +25,7 @@ class Attack
 
   def heal(defender, attacker)
     attacker.heal
-    defender.log ("#{ attacker.name } healed himself!")
+    defender.log ("#{ attacker.name } healed!")
   end
 
 end

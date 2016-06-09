@@ -6,42 +6,64 @@
 </head>
 
 <body>
-  <div class = "screen">
-    <div class = "left_wrapper">
-      <div class = "message_container"><%= @status %></div>
-      <div class = "active_player"><%= @game.attacker.name %>, it's your turn!</div>
-      <img src="https://media.giphy.com/media/VizM8JHar4kJW/giphy.gif" style ="width=auto; max-height: 300px"/>
-
-    </div>
-    <div class = "right_wrapper">
-      <div class="opponent_wrapper">
-        <div class="opponent_data">
-          <div class="inactive_player"><%= @game.defender.name %>
-            <div class="inactive_player_button">poisoned</div>
-            <div class="inactive_player_button">asleep</div>
-            <div class="inactive_player_button">paralyzed</div>
+  <div class="main_wrapper">
+    <img src="./images/title.png"/>
+    <div class = "screen">
+      <div class = "left_wrapper">
+        <div class = "message_container"><%= @status %></div>
+        <div class = "active_player"><%= @game.attacker.name %>, it's your turn!</div>
+          <% if @game.attacker == @game.player1 %>
+            <img src="./images/pikachu_back.gif" style ="width=auto; max-height: 300px"/>
+          <% else %>
+            <img src="./images/jiggly_back.gif" style ="width=auto; height: 300px"/>
+          <% end %>
+      </div>
+      <div class = "right_wrapper">
+        <div class="opponent_wrapper">
+          <div class="opponent_data">
+            <div class="inactive_player"><%= @game.defender.name %>
+              <% if @game.defender.poisoned %>
+                <div class="inactive_player_button">poisoned</div>
+              <% end %>
+              <% if @game.defender.asleep %>
+                <div class="inactive_player_button">asleep</div>
+              <% end %>
+              <% if @game.defender.paralyzed %>
+                <div class="inactive_player_button">paralyzed</div>
+              <% end %>
+            </div>
+            <div class = "hp_bar">
+              <% @hp_colour = "#00FF00" if (@game.defender.hp > 70) %>
+              <% @hp_colour = "#F7941D" if (@game.defender.hp <= 70) %>
+              <% @hp_colour = "#FF0000" if (@game.defender.hp < 30) %>
+              <div style="height: 20px; width: <%= @game.defender.hp %>%; background-color:<%=@hp_colour %>"/>
+            </div>
           </div>
-          <div class="hp_bar"></div>
+          <div class="opponent_creature">
+            <% if @game.attacker == @game.player1 %>
+              <img src="./images/jiggly_front.gif" style ="width=auto; max-height: 160px"/>
+            <% else %>
+              <img src="./images/pikachu_front.gif" style ="width=auto; max-height: 160px"/>
+            <% end %>
+          </div>
         </div>
-        <div class="opponent_creature"><img src="http://rs421.pbsrc.com/albums/pp291/nin10dogirl/pikachu.gif~c200" style ="width=auto; max-height: 160px"/></div>
-      </div>
-      <div class = "hp_bar">
-        <% @hp_colour = "#00FF00" if (@game.attacker.hp > 70) %>
-        <% @hp_colour = "#F7941D" if (@game.attacker.hp <= 70) %>
-        <% @hp_colour = "#FF0000" if (@game.attacker.hp < 30) %>
-        <div style="height: 20px; width: <%= (4.76 * @game.attacker.hp).to_i %>px; background-color:<%=@hp_colour %>"/>
-      </div>
-      <div class = "buttons">
-        <form action="/attack" method="post">
-          <button type="submit" name="attack" value="default_attack" class = "attack_button">Attack</button>
-          <button type="submit" name="attack" value="sleep_attack" class = "attack_button">Sleep</button>
-          <button type="submit" name="attack" value="poison_attack" class = "attack_button">Poison</button>
-          <button type="submit" name="attack" value="heal" class = "attack_button">Heal</button>
-        </form>
+        <div class = "hp_bar">
+          <% @hp_colour = "#00FF00" if (@game.attacker.hp > 70) %>
+          <% @hp_colour = "#F7941D" if (@game.attacker.hp <= 70) %>
+          <% @hp_colour = "#FF0000" if (@game.attacker.hp < 30) %>
+          <div style="height: 20px; width: <%= @game.attacker.hp %>%; background-color:<%=@hp_colour %>"/>
+        </div>
+        <div class = "buttons">
+          <form action="/attack" method="post">
+            <button type="submit" name="attack" value="default_attack" class = "attack_button">Attack</button>
+            <button type="submit" name="attack" value="sleep_attack" class = "attack_button">Sleep</button>
+            <button type="submit" name="attack" value="poison_attack" class = "attack_button">Poison</button>
+            <button type="submit" name="attack" value="heal" class = "attack_button">Heal</button>
+          </form>
+        </div>
       </div>
     </div>
   </div>
-
 </body>
 
 </html>

@@ -6,7 +6,8 @@ feature 'players login' do
 		fill_in :Player1, with: 'Kenneth'
 		fill_in :Player2, with: 'Elena'
 		click_button :Submit
-		expect(page).to have_content 'Kenneth vs. Elena'
+		expect(page).to have_content 'Kenneth'
+		expect(page).to have_content 'Elena'
 	end
 
 end
@@ -16,7 +17,8 @@ feature 'single player' do
 		visit '/'
 		fill_in :Player, with: 'Kenneth'
 		click_button :single_player
-		expect(page).to have_content 'Kenneth vs. Capybara'
+		expect(page).to have_content 'Kenneth'
+		expect(page).to have_content 'Capybara'
 	end
 
 end

@@ -31,7 +31,8 @@ class Player
   end
 
   def heal
-    @hp += (1 + rand(10))
+    @hp += (1 + Kernel.rand(10))
+    @hp = 100 if hp > 100
   end
 
   def log(message)

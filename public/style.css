@@ -6,7 +6,17 @@
 
 body {
 	font-family: Pokemon;
+	background-color: #22B400;
+	background-image: url(./images/green_bg.jpg);
+	background-position: center top;
+	background-repeat: no-repeat;
+}
 
+.main_wrapper {
+	width: 960px;
+	height: 600px;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 .screen {
@@ -14,11 +24,11 @@ body {
 	background-image: url(./images/background.png);
 	width: 960px;
 	height: 448px;
-	margin: auto;
+	border: 5px solid #45FE00;
 }
 
 .message_container	{
-	font-size: 20px;
+	font-size: 14px;
 	color: #000;
 	width: 70%;
 	height: 40px;
@@ -42,7 +52,6 @@ body {
 
 .inactive_player {
 	font-size: 20px;
-	font-family: arial, sans-serif;
 	color: #FFF;
 	width: 100%;
 	height: 26px;
@@ -52,14 +61,15 @@ body {
 
 .inactive_player_button	{
 	color: #000;
-	width: 70px;
-	height: 20px;
+	width: 90px;
+	height: 15px;
 	background-color: #BBE599;
 	border: 1px solid #FFF;
 	margin-right: 5px;
+	padding-top: 5px;
 	float: right;
 	text-align: center;
-	font-size: 14px;
+	font-size: 9px;
 }
 
 .left_wrapper	{
@@ -90,6 +100,7 @@ body {
 	float: left;
 	text-align: center;
 	font-size: 20px;
+	font-family: Pokemon;
 	padding-top: 8px;
 }
 
@@ -105,11 +116,14 @@ body {
 }
 
 .opponent_creature {
-	width: 100%;
+	width: 470px;
+	height:150px;
 	padding-left: 130px;
+	padding-top: 60px;
+
 }
 
 .opponent_data	{
 	width: 100%;
-	height: 100px;
+	height: 310px;
 }

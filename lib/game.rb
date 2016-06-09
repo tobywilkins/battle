@@ -28,7 +28,6 @@ class Game # Knows about turns
   end
 
   def attack(type)
-    set_combatants
     suffer_poison if attacker.poisoned
 
     @attack_gen.send(type,@defender,@attacker) if able_to_fight?
@@ -60,7 +59,8 @@ class Game # Knows about turns
     return "#{ defender.name } loses" if game_over?
     clean_up
     @turn_number += 1
-    defender.last_action
+    set_combatants
+    attacker.last_action
   end
 
   def clean_up

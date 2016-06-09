@@ -46,10 +46,11 @@ describe Player do
     end
   end
 
-  describe '#deduct' do
+  describe '#heal' do
     it 'reduces hp by given amount' do
-      srand(5)
-      expect { player.heal }.to change { player.hp }.by(10)
+      player.deduct(10)
+      allow(Kernel).to receive(:rand) { 1 }
+      expect { player.heal }.to change { player.hp }.by(2)
     end
   end
 

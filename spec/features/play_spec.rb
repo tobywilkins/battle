@@ -29,7 +29,7 @@ feature 'turn switching' do
   it 'swaps turn to player 2' do
     sign_in
     click_button "Attack"
-    expect(page).to have_content "Elena's turn"
+    expect(page).to have_content "Elena, it's your turn!"
   end
 end
 
@@ -49,7 +49,7 @@ feature 'vs AI' do
 		fill_in :Player, with: 'Kenneth'
 		click_button :single_player
 		click_button 'Attack'
-		expect(page).to have_content("Turn: 3")
+		expect(page).to have_content "Kenneth, it's your turn!"
 	end
 end
 

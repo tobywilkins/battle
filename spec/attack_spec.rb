@@ -51,7 +51,7 @@ describe Attack do
 
   describe "#heal" do
     it 'calls heal method on attacker' do
-      attack.heal(:bleh, attacker)
+      attack.heal(defender, attacker)
       expect(attacker).to have_received(:heal)
     end
   end

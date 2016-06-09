@@ -59,5 +59,6 @@ feature 'multiple attacks available' do
 		expect(page).to have_content "Attack"
 		expect(page).to have_content "Sleep"
 		expect(page).to have_content "Poison"
+		expect(page).to have_content "Heal"
 	end
 end

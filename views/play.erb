@@ -15,8 +15,9 @@
     <h3><%= @game.player1.name %>: <%= @game.player1.hp %></h3>
     <form action="/attack" method="post">
       <button type="submit" name="attack" value="default_attack">Attack</button>
-      <button type="submit" name="attack" value="sleep">Sleep</button>
-      <button type="submit" name="attack" value="poison">Poison</button>
+      <button type="submit" name="attack" value="sleep_attack">Sleep</button>
+      <button type="submit" name="attack" value="poison_attack">Poison</button>
+      <button type="submit" name="attack" value="heal">Heal</button>
     </form>
   </div>
   <div class="player">

@@ -30,6 +30,10 @@ class Player
     @hp -= x
   end
 
+  def heal
+    @hp += (5 + srand(11))
+  end
+
   def log(message)
     @last_action = message
   end

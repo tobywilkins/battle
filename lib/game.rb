@@ -1,4 +1,5 @@
 require_relative 'player_model'
+require_relative 'attack'
 
 class Game # Knows about turns
 
@@ -25,7 +26,7 @@ class Game # Knows about turns
     set_combatants
     suffer_poison if attacker.poisoned
 
-    @attack_gen.send(type,@defender) if able_to_fight?
+    @attack_gen.send(type,@defender,@attacker) if able_to_fight?
     defender.log ("#{ attacker.name } is #{condition} and couldn't attack!") unless able_to_fight?
     end_turn
   end

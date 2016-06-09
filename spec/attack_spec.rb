@@ -6,12 +6,12 @@ describe Attack do
   let(:defender_2) {spy(:defender_2, name: "Toby")}
   let(:attacker) {spy(:attacker, name: "Toby")}
 
-  describe '#default' do
+  before do
+    allow(Kernel).to receive(:rand) { 1 }
+    attack.default_attack(defender)
+  end
 
-    before do
-      attack.default_attack(defender)
-      srand(1)
-    end
+  describe '#default' do
 
     it 'sends deduct to defending player' do
       expect(defender).to have_received(:deduct)
@@ -22,7 +22,7 @@ describe Attack do
     end
 
     it 'doesn\'t send paralyze depending on random' do
-      srand(8)
+      allow(Kernel).to receive(:rand) { 8 }
       attack.default_attack(defender_2)
       expect(defender_2).not_to have_received(:paralyze)
     end
@@ -30,15 +30,13 @@ describe Attack do
 
   describe '#suffer_poison' do
     it 'returns a number between 1+5' do
-      srand(2)
       attack.suffer_poison(attacker)
-      expect(attacker).to have_received(:deduct).with 3
+      expect(attacker).to have_received(:deduct).with 2
     end
   end
 
   describe '#poison_attack' do
     it 'sets the defender to poisoned' do
-      srand(4)
       attack.poison_attack(defender)
       expect(defender).to have_received(:poison)
     end
@@ -48,6 +46,13 @@ describe Attack do
     it 'sends message to set asleep' do
       attack.sleep_attack(defender)
       expect(defender).to have_received(:set_asleep)
+    end
+  end
+
+  describe "#heal" do
+    it 'calls heal method on attacker' do
+      attack.heal(:bleh, attacker)
+      expect(attacker).to have_received(:heal)
     end
   end
 end

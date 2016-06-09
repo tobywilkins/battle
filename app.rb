@@ -26,7 +26,7 @@ class Battle < Sinatra::Base
   end
 
   get '/ai' do
-    session[:message] = Game.game.attack("attack")
+    session[:message] = Game.game.attack("default_attack")
     redirect '/lose' if session[:message].split.last == 'loses'
     redirect '/play'
   end

@@ -14,7 +14,7 @@
 	<div class="player">
     <h3><%= @game.player1.name %>: <%= @game.player1.hp %></h3>
     <form action="/attack" method="post">
-      <button type="submit" name="attack" value="attack">Attack</button>
+      <button type="submit" name="attack" value="default_attack">Attack</button>
       <button type="submit" name="attack" value="sleep">Sleep</button>
       <button type="submit" name="attack" value="poison">Poison</button>
     </form>

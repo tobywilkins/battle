@@ -16,8 +16,8 @@ class Game # Knows about turns
   def initialize(player1, player2,attack_gen = Attack.new)
     @player1 = player1
     @player2 = player2
-    @defender
-    @attacker
+    @defender = player2
+    @attacker = player1
     @turn_number = 1
     @attack_gen = attack_gen
     @attacks = ["default_attack","poison_attack","sleep_attack","heal"]
@@ -86,4 +86,3 @@ class Game # Knows about turns
   end
 
 end
-

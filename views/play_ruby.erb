@@ -1,0 +1,37 @@
+<html>
+
+<head>
+  <title>Battle!</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+  <div id = screen>
+test
+
+
+  <div id = screen>
+
+
+  <h1>	<%= @game.player1.name %> vs. <%= @game.player2.name %> </h1>
+  <h2> Turn: <%= @game.turn_number %></h2>
+
+  <h2> <%= @game.player_turn.name %>'s turn</h2>
+
+	<div class="player">
+    <h3><%= @game.player1.name %>: <%= @game.player1.hp %></h3>
+    <form action="/attack" method="post">
+      <button type="submit" name="attack" value="default_attack">Attack</button>
+      <button type="submit" name="attack" value="sleep_attack">Sleep</button>
+      <button type="submit" name="attack" value="poison_attack">Poison</button>
+      <button type="submit" name="attack" value="heal">Heal</button>
+    </form>
+  </div>
+  <div class="player">
+    <h3><%= @game.player2.name %>: <%= @game.player2.hp %></h3>
+  </div>
+
+	<div><em><%= @status %></em></div>
+</body>
+
+</html>
